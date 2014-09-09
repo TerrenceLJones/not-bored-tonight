@@ -1,0 +1,7 @@
+ruby '2.1.2'
+
+#ruby-gemset=not-bored-tonight
+
+source 'http://rubygems.org'
+
+gem 'rails', '4.1.5'
