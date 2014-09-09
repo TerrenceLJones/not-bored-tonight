@@ -20,7 +20,13 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
-  gem 'capybara'
-  gem 'fabrication'
   gem 'rspec-rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'fabrication'
+  gem 'launchy'
+  gem 'shoulda'
 end
