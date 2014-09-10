@@ -15,8 +15,8 @@
 #     duplicate username or email
 #   * Account information should be present in database.
 
-feature "Users signs up" do
-  scenario "Happy Path, Sign Up and subsequently Sign In" do
+feature "User signs up" do
+  scenario "and successfully create an account" do
     visit '/'
     click_link "Sign Up"
     fill_in "Email", with: "todd@example.com"
@@ -26,5 +26,39 @@ feature "Users signs up" do
     expect(page).to have_content("Welcome to Not Bored Tonight, todd@example.com!")
     expect(page).to_not have_content("Sign Up")
     expect(page).to_not have_content("Sign In")
+
+    click_link("Sign Out")
+
+    expect(current_path).to eq(new_user_session_path)
+    fill_in "Email", with: "todd@example.com"
+    fill_in "Password", with: "password1"
+    click_button "Log in"
+    expect(page).to have_content("Welcome back, todd@example.com!")
   end
+
+  scenario "with an email already in use" do
+    visit '/'
+    click_link "Sign Up"
+    fill_in "Email", with: "todd@example.com"
+    fill_in "Password", with: "password1"
+    click_button "Create My Account"
+
+    click_link("Sign Out")
+    expect(current_path).to eq(new_user_session_path)
+
+    click_link "Sign Up"
+    fill_in "Email", with: "todd@example.com"
+    fill_in "Password", with: "password1"
+    click_button "Create My Account"
+    expect(page).to have_content("has already been taken")
+  end
+
+  scenario "without filling in required credentials" do
+    visit '/'
+    click_link "Sign Up"
+    click_button "Create My Account"
+    expect(page).to have_content("can't be blank")
+    expect(page).to have_content("can't be blank")
+  end
+
 end
