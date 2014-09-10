@@ -23,6 +23,7 @@ feature "Users signs in" do
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Welcome back, #{@user.first_name} #{@user.last_name}!")
   end
 
