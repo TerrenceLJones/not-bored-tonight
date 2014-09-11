@@ -111,3 +111,19 @@ so that the deleted account fully inaccessible.
 #### Acceptance Criteria
 
   * Session cookie should not be present in browser
+
+
+
+### Login with OminAuth Facebook
+
+#### Story
+
+As a user,
+I would like the ability to sign up to use the site with my Facebook account
+so that I don't have to create new credentials.
+
+#### Acceptance Criteria
+
+  * Successfully create account with Facebook credentials
+  * Associated Facebook credentials with existing account, if user has already
+  created an account with email and password
