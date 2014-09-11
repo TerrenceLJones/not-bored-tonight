@@ -12,10 +12,10 @@
 
 feature "Facebook authentication" do
 
-  scenario "User signs up via. Facebook", do
+  scenario "User signs up via. Facebook" do
     sign_into_facebook_as "joe"
     visit "/"
-    click_link "Sign In with Facebook"
+    click_link "Sign in with Facebook"
     expect(page).to     have_content("Successfully authenticated from Facebook account.")
     expect(page).to     have_content("Sign Out")
     expect(page).to_not have_content("Sign In")
