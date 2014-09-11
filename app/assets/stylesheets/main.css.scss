@@ -46,3 +46,29 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+
+
+
+
+/*
+  ========================================
+  Header styles
+  ========================================
+*/
+
+.header__logo,
+.header__navigation,
+.navigation__browse-menu,
+.navigation__browse-menu li,
+.navigation__search,
+.navigation__user-menu,
+.navigation__user-menu li {
+  display: inline-block;
+}
+
+.header__logo a,
+.navigation__browse-menu li a,
+.navigation__user-menu li a {
+  text-decoration: none;
+}
