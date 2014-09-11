@@ -17,7 +17,7 @@
 #     duplicate username or email
 #   * Account information should be present in database.
 
-feature "User signs up", js: :true do
+feature "User signs up" do
   scenario "and successfully creates an account" do
     visit '/'
     click_link "Sign Up"
