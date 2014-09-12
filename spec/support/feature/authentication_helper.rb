@@ -11,14 +11,15 @@ module Features
       uid = user_or_username.try(:facebook_uid) || '12345'
       email = user.try(:email) || "#{username}smith@example.com"
 
-      photo_url = "http://graph.facebook.com/#{uid}/picture?type=square"
-      @default_image ||= File.read(Rails.root.join('spec', 'support', 'files', 'cartoon-ninja.jpeg'))
+      # photo_url = "http://graph.facebook.com/#{uid}/picture?type=square"
+      # @default_image ||= File.read(Rails.root.join('spec', 'support', 'files', 'cartoon-ninja.jpeg'))
+      #
+      # stub_request(:get, photo_url).
+      #   to_return( body: @default_image,
+      #             :status   => 200,
+      #             :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
 
-      stub_request(:get, photo_url).
-        to_return( body: @default_image,
-                  :status   => 200,
-                  :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
-
+      OmniAuth.config.test_mode = true
       OmniAuth.config.add_mock(:facebook, {
         uid: uid,
         credentials: {
@@ -28,13 +29,7 @@ module Features
           nickname: username,
           email: email,
           name: "#{username.capitalize} Smith",
-          image: photo_url,
-        },
-        extra: {
-          raw_info: {
-            location: 'San Francisco',
-            gravatar_id: '123456789'
-          }
+          # image: photo_url,
         }
       })
     end

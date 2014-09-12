@@ -21,32 +21,26 @@ feature "Facebook authentication" do
     expect(page).to_not have_content("Sign In")
     click_link "Sign Out"
     expect(page).to_not have_content("Sign Out")
-    expect(page).to     have_content("Sign In with Facebook")
-    User.where(
-      email: "joesmith@example.com",
-      facebook_uid: "12345",
-      facebook_username: "joe",
-      name: "Joe Smith",
-      github_access_token: ENV["FACEBOOK_ACCESS_TOKEN"],
-    ).count.should == 1
-    User.count.should == 1
+    expect(page).to     have_content("Sign in with Facebook")
+    expect(User.count).to eq 1
   end
 
   scenario "Student can log in and log out with Facebook" do
     Fabricate(:user,
-      facebook_uid: "12345",
+      uid: "12345",
       email: "joe@example.com",
-      facebook_username: "joe")
+      # name: "joe"
+      )
     sign_into_facebook_as "joe"
     visit "/"
-    click_link "Sign In with Facebook"
+    click_link "Sign in with Facebook"
     expect(page).to     have_content("Successfully authenticated from Facebook account.")
     expect(page).to     have_content("Sign Out")
     expect(page).to_not have_content("Sign In")
     click_link "Sign Out"
     expect(page).to_not have_content("Sign Out")
-    expect(page).to     have_content("Sign In with Github")
-    User.count.should == 1
+    expect(page).to     have_content("Sign in with Facebook")
+    expect(User.count).to eq 2
   end
 
 end
