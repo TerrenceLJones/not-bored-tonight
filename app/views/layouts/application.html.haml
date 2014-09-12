@@ -1,24 +1,38 @@
 !!!
-%html
+%html{:lang => "en"}
   %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     %title Not Bored Tonight
+    = javascript_include_tag "vendor/modernizr"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     %header.header
       .header__logo
-        %h1 Not Bored Tonight
+        %h1
+          = link_to "Not Bored Tonight", root_path
       .header__navigation
-        %ul
-          - if signed_in?
-            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-            %li= link_to "Edit Profile", edit_user_registration_path
-          - else
-            %li= link_to "Sign In", new_user_session_path
-            %li= link_to "Sign Up", new_user_registration_path
-
+        .navigation__browse-menu
+          %ul
+            %li= link_to "Stay In", '#'
+            %li= link_to "On the Town", '#'
+        .navigation__search
+          %input.search-box
+        .navigation__user-menu
+          %ul
+            - if signed_in?
+              %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+              %li= link_to "Edit Profile", edit_user_registration_path
+            - else
+              %li= link_to "Log In", new_user_session_path
     %p.notice= notice
     %p.alert= alert
 
     = yield
+
+    %footer.footer
+      .footer__social-media
+      .footer__copyright
+    = javascript_include_tag "application"
