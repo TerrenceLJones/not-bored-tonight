@@ -1,0 +1,26 @@
+%h2 Find Activities
+.search-container
+  .search-container__navigation
+    .navigation__title--stay-in
+      %a#stay-in{href: "#"}
+        %h3 Stay In
+    .navigation__title--go-out
+      %a#go-out{href: "#"}
+        %h3 Go Out
+    .navigation__stay-in.active
+      %ul
+        %li= link_to "Television", '#'
+        %li= link_to "Movies", '#'
+        %li= link_to "Reading", '#'
+        %li= link_to "Games", '#'
+        %li= link_to "Food", '#'
+    .navigation__go-out
+      %ul
+        %li= link_to "Food", '#'
+        %li= link_to "Sports", '#'
+        %li= link_to "Movies", '#'
+        %li= link_to "Various Meetups", '#'
+        %li= link_to "Music", '#'
+        %li= link_to "Cultural", '#'
+        %li= link_to "Outdoors", '#'
+  .search-container__search-results

@@ -6,7 +6,6 @@
     %title Not Bored Tonight
     = javascript_include_tag "vendor/modernizr"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
 
@@ -16,7 +15,7 @@
     %p.alert= alert
 
     = yield
-    
+
     = render 'layouts/footer'
 
     = javascript_include_tag "application"
