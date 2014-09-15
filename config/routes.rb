@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'dashboard' => 'users#dashboard'
 
+  resources :activities
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
