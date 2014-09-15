@@ -6,8 +6,6 @@ feature "Activity Search Page" do
     expect(page).to have_content("Find Activities")
   end
 
-  Capybara.javascript_driver = :selenium
-
   scenario "should have search navigation", js: :true do
     visit "/"
     click_link "Find Activities"
@@ -24,5 +22,12 @@ feature "Activity Search Page" do
     expect(page).to have_link("Sports")
     expect(page).to_not have_link("Television")
   end
-  
+
+  scenario "should show search results", js: :true do
+    visit "/"
+    click_link "Find Activities"
+    click_link "Television"
+    expect(find(".search-container__search-results")).to have_content("This is a test!")
+  end
+
 end
