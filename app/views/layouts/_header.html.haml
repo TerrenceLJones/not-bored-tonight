@@ -1,0 +1,18 @@
+%header.header
+  .header__logo
+    %h1
+      = link_to "Not Bored Tonight", root_path
+  .header__navigation
+    .navigation__browse-menu
+      %ul
+        %li= link_to "Stay In", '#'
+        %li= link_to "On the Town", '#'
+    .navigation__search
+      %input.search-box
+    .navigation__user-menu
+      %ul
+        - if signed_in?
+          %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+          %li= link_to "Edit Profile", edit_user_registration_path
+        - else
+          %li= link_to "Log In", new_user_session_path

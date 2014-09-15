@@ -9,47 +9,14 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %header.header
-      .header__logo
-        %h1
-          = link_to "Not Bored Tonight", root_path
-      .header__navigation
-        .navigation__browse-menu
-          %ul
-            %li= link_to "Stay In", '#'
-            %li= link_to "On the Town", '#'
-        .navigation__search
-          %input.search-box
-        .navigation__user-menu
-          %ul
-            - if signed_in?
-              %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-              %li= link_to "Edit Profile", edit_user_registration_path
-            - else
-              %li= link_to "Log In", new_user_session_path
+
+    = render 'layouts/header'
+
     %p.notice= notice
     %p.alert= alert
 
     = yield
-
-    %footer.footer
-      .footer__social-media
-        %fieldset.social-media
-          %legend Follow Us
-        .footer__social-media--facebook
-        .footer__social-media--twitter
-      .footer__tag-line
-        %h3 Bored? Not now!
-      .footer__navigation
-        .navigation__browse-menu
-          %ul
-            %li= link_to "About Us", '#'
-            %li= link_to "Blog", '#'
-            %li= link_to "Get Started", "#"
-      .footer__terms-and-copyright
-        %ul
-          %li= link_to "Term of Use", '#'
-          %li= link_to "Privacy Policy", '#'
-        %small &copy; NotBoredTonight.com. All rights reserved.
+    
+    = render 'layouts/footer'
 
     = javascript_include_tag "application"
