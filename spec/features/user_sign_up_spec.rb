@@ -20,7 +20,8 @@
 feature "User signs up" do
   scenario "and successfully creates an account" do
     visit '/'
-    click_link "Sign Up"
+    click_link "Log In"
+    click_link "Sign up"
     fill_in "First Name", with: "Todd"
     fill_in "Last Name", with: "Peters"
     fill_in "Email", with: "todd@example.com"
@@ -43,7 +44,8 @@ feature "User signs up" do
 
   scenario "with an email already in use" do
     visit '/'
-    click_link "Sign Up"
+    click_link "Log In"
+    click_link "Sign up"
     fill_in "First Name", with: "Todd"
     fill_in "Last Name", with: "Peters"
     fill_in "Email", with: "todd@example.com"
@@ -54,7 +56,7 @@ feature "User signs up" do
     click_link("Sign Out")
     expect(current_path).to eq(new_user_session_path)
 
-    click_link "Sign Up"
+    click_link "Sign up"
     fill_in "First Name", with: "Todd"
     fill_in "Last Name", with: "Peters"
     fill_in "Email", with: "todd@example.com"
@@ -66,7 +68,8 @@ feature "User signs up" do
 
   scenario "without filling in required credentials" do
     visit '/'
-    click_link "Sign Up"
+    click_link "Log In"
+    click_link "Sign up"
     fill_in "First Name", with: "Todd"
     fill_in "Last Name", with: "Peters"
     click_button "Create Account"

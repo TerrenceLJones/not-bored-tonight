@@ -17,7 +17,7 @@ feature "Users updates profile information" do
 
   scenario "successufly updates first and last name" do
     visit "/"
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
@@ -35,7 +35,7 @@ feature "Users updates profile information" do
 
   scenario "successfully updates email" do
     visit "/"
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
@@ -53,7 +53,7 @@ feature "Users updates profile information" do
 
   scenario "successfully updates password" do
     visit "/"
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
@@ -72,7 +72,7 @@ feature "Users updates profile information" do
 
   scenario "without confirming password" do
     visit '/'
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
@@ -89,7 +89,7 @@ feature "Users updates profile information" do
 
   scenario "without putting current password to complete update" do
     visit '/'
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
