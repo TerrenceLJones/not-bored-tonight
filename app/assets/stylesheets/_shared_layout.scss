@@ -72,3 +72,49 @@ table {
 .navigation__user-menu li a {
   text-decoration: none;
 }
+
+
+
+
+/*
+  ========================================
+  Footer styles
+  ========================================
+*/
+
+.footer__social-media--facebook {
+  background-image: url("icon-facebook.png");
+  background-size: cover;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+.footer__social-media--twitter {
+  background-image: url("icon-twitter.png");
+  background-size: cover;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+fieldset.social-media {
+    border-top: 1px solid #aaa;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    text-align: center;
+}
+
+fieldset.social-media legend {
+    padding: 5px 10px;
+}
+
+.footer__navigation, {
+  border-top: 1px solid #aaa;
+}
+.footer__copyright {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 15px; 
+}

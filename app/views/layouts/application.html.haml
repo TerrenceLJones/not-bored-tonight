@@ -34,5 +34,22 @@
 
     %footer.footer
       .footer__social-media
-      .footer__copyright
+        %fieldset.social-media
+          %legend Follow Us
+        .footer__social-media--facebook
+        .footer__social-media--twitter
+      .footer__tag-line
+        %h3 Bored? Not now!
+      .footer__navigation
+        .navigation__browse-menu
+          %ul
+            %li= link_to "About Us", '#'
+            %li= link_to "Blog", '#'
+            %li= link_to "Get Started", "#"
+      .footer__terms-and-copyright
+        %ul
+          %li= link_to "Term of Use", '#'
+          %li= link_to "Privacy Policy", '#'
+        %small &copy; NotBoredTonight.com. All rights reserved.
+
     = javascript_include_tag "application"
