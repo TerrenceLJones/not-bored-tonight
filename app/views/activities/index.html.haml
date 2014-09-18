@@ -1,26 +1,24 @@
 %h2 Find Activities
 .search-container
+  .search-container__parameters
+    %label Please enter a search location.
+    %input#search-location
+    %label Please select a search radius
+    %select#search-radius
+      - ((5..100).step(5).to_a).each do |i|
+        %option #{i}
+    %select#search-date
+      %option Today
+      %option Tomorrow
+      %option This Week
+      %option Next Week
   .search-container__navigation
-    .navigation__title--stay-in
-      %a#stay-in{href: "#"}
-        %h3 Stay In
-    .navigation__title--go-out
-      %a#go-out{href: "#"}
-        %h3 Go Out
-    .navigation__stay-in.active
-      %ul
-        %li= link_to "Television", '#'
-        %li= link_to "Movies", '#'
-        %li= link_to "Reading", '#'
-        %li= link_to "Games", '#'
-        %li= link_to "Food", '#'
-    .navigation__go-out
-      %ul
-        %li= link_to "Food", '#'
-        %li= link_to "Sports", '#'
-        %li= link_to "Movies", '#'
-        %li= link_to "Various Meetups", '#'
-        %li= link_to "Music", '#'
-        %li= link_to "Cultural", '#'
-        %li= link_to "Outdoors", '#'
+    %ul
+      %li.query-item= link_to "Food", '#'
+      %li.query-item= link_to "Sports", '#'
+      %li.query-item= link_to "Out-To-The Movies", '#'
+      %li.query-item= link_to "Various Meetups", '#'
+      %li.query-item= link_to "Music", '#'
+      %li.query-item= link_to "Cultural", '#'
+      %li.query-item= link_to "Outdoors", '#'
   .search-container__search-results
