@@ -11,7 +11,7 @@ class EventfulApi
 
       event["title"] = ActionView::Base.full_sanitizer.sanitize(e["title"])
       event["description"] = ActionView::Base.full_sanitizer.sanitize(e["description"])
-      event["start_time"] = ActionView::Base.full_sanitizer.sanitize(e["start_time"])
+      event["time"] = ActionView::Base.full_sanitizer.sanitize(e["start_time"])
       event["latitude"] = ActionView::Base.full_sanitizer.sanitize(e["latitude"])
       event["longitude"] = ActionView::Base.full_sanitizer.sanitize(e["longitude"])
 
