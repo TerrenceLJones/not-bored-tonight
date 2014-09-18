@@ -1,9 +1,9 @@
 %h2 Find Activities
 .search-container
   .search-container__parameters
-    %label Please enter a search location.
+    %label Zip Code
     %input#search-location
-    %label Please select a search radius
+    %label Search Radius
     %select#search-radius
       - ((5..100).step(5).to_a).each do |i|
         %option #{i}

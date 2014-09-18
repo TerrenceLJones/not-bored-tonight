@@ -15,6 +15,7 @@ feature "Facebook authentication" do
   scenario "User signs up via. Facebook" do
     sign_into_facebook_as "joe"
     visit "/"
+    click_link "Log In"
     click_link "Sign in with Facebook"
     expect(page).to     have_content("Successfully authenticated from Facebook account.")
     expect(page).to     have_content("Sign Out")
@@ -33,6 +34,7 @@ feature "Facebook authentication" do
       )
     sign_into_facebook_as "joe"
     visit "/"
+    click_link "Log In"
     click_link "Sign in with Facebook"
     expect(page).to     have_content("Successfully authenticated from Facebook account.")
     expect(page).to     have_content("Sign Out")

@@ -15,8 +15,12 @@ feature "Activity Search Page" do
   end
 
   scenario "should show search results", js: :true do
+    pending
     visit "/"
     click_link "Find Activities"
+    fill_in 'search-location', with: "37215"
+    select '10', from: "search-radius"
+    select 'Next Week', from: "search-date"
     click_link "Sport"
     expect(find(".search-container__search-results")).to have_content("Title")
     expect(page).to have_css(".search-results__sports")
