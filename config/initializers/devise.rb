@@ -233,8 +233,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   require "omniauth-facebook"
-  API_KEYS = YAML::load_file("#{Rails.root}/config/api_keys.yml")[Rails.env]
-  config.omniauth :facebook , API_KEYS['facebook']['api_key'], API_KEYS['facebook']['api_secret'],
+  config.omniauth :facebook , ENV["facebook_api_key"], ENV["facebook_api_secret"],
   scope:'email', display: 'page'
 
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
