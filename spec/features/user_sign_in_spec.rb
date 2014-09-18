@@ -19,7 +19,7 @@ feature "Users signs in" do
 
   scenario "with correct credentials" do
     visit "/"
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "#{@user.password}"
     click_button "Log in"
@@ -29,7 +29,7 @@ feature "Users signs in" do
 
   scenario "with incorrect credentials" do
     visit "/"
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "wrong123"
     click_button "Log in"
@@ -38,7 +38,7 @@ feature "Users signs in" do
 
   scenario "with an email that hasn't been registered" do
     visit '/'
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "joe@example.com"
     fill_in "Password", with: "password!"
     click_button "Log in"
@@ -49,7 +49,7 @@ feature "Users signs in" do
 
   scenario "with the incorrect password" do
     visit '/'
-    click_link "Sign In"
+    click_link "Log In"
     fill_in "Email", with: "#{@user.email}"
     fill_in "Password", with: "notmypassword1!"
     click_button "Log in"
@@ -60,7 +60,7 @@ feature "Users signs in" do
 
   scenario "with blank form" do
     visit '/'
-    click_link "Sign In"
+    click_link "Log In"
     click_button "Log in"
     expect(page).to have_content("Invalid email or password.")
   end
