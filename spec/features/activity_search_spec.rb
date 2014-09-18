@@ -1,4 +1,5 @@
 feature "Activity Search Page" do
+
   scenario "should be displayed" do
     visit "/"
     click_link "Find Activities"
@@ -15,15 +16,31 @@ feature "Activity Search Page" do
   end
 
   scenario "should show search results", js: :true do
-    pending
     visit "/"
     click_link "Find Activities"
     fill_in 'search-location', with: "37215"
     select '10', from: "search-radius"
     select 'Next Week', from: "search-date"
-    click_link "Sport"
-    expect(find(".search-container__search-results")).to have_content("Title")
-    expect(page).to have_css(".search-results__sports")
+    VCR.use_cassette('Evenful_Api_Call', record: :new_episodes) do
+      click_link "Sports"
+      expect(find(".search-container__search-results")).to have_content("Name")
+      expect(find(".search-container__search-results")).to have_content("Description")
+      expect(find(".search-container__search-results")).to have_content("Location")
+      expect(page).to have_css(".search-results__activities")
+    end
   end
+
+  scenario "should show `Save` button on each search result", js: :true do
+    visit "/"
+    click_link "Find Activities"
+    fill_in 'search-location', with: "37215"
+    select '10', from: "search-radius"
+    select 'Next Week', from: "search-date"
+    VCR.use_cassette('Evenful_Api_Call') do
+      click_link "Sports"
+      expect(find(".search-results__activities")).to have_button("Save")
+    end
+  end
+
 
 end
