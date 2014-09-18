@@ -1,6 +1,7 @@
 .search-results__sports
   - @activities.each do |activity|
-    %h4= "Title: #{activity["title"]}"
+    %h4= "Name: #{activity["title"]}"
+    %h5= "Venue Name: #{activity["venue_name"]}"
     %h6= "Time: #{activity["time"]}"
-    %h6= "Location: "
+    %h6= "Location: #{activity["address_string"]}"
     %p= "Description: #{activity["description"]}"

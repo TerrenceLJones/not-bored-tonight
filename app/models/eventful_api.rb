@@ -9,11 +9,16 @@ class EventfulApi
     data["events"]["event"].each do |e|
       event = {}
 
-      event["title"] = ActionView::Base.full_sanitizer.sanitize(e["title"])
+      event["name"] = e["title"]
       event["description"] = ActionView::Base.full_sanitizer.sanitize(e["description"])
-      event["time"] = ActionView::Base.full_sanitizer.sanitize(e["start_time"])
-      event["latitude"] = ActionView::Base.full_sanitizer.sanitize(e["latitude"])
-      event["longitude"] = ActionView::Base.full_sanitizer.sanitize(e["longitude"])
+      event["time"] = e["start_time"]
+      event["venue_name"] = e["venue_name"]
+      event["address"] = e["venue_address"]
+      event["city"] = e["city"]
+      event["state"] = e["region_name"]
+      event["zip_code"] = e["postal_code"]
+      event["country"] = e["country_name"]
+      event["address_string"] = "#{event["address"]} #{event["city"]} #{event["state"]} #{event["zip_code"]} #{event["country"]}"
 
       events << event
     end
