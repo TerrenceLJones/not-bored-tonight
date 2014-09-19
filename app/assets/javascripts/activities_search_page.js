@@ -4,8 +4,9 @@
   $(document).ready(init);
 
   function init(){
-    $(".query-item").on('click', getSearchResults);
     geoLocation();
+    $(".query-item").on('click', getSearchResults);
+    $("#search-results").on('click', "#save-activity", addToCalendar);
   }
 
   var coords;
@@ -35,6 +36,21 @@
     else {
         alert('Geolocation is not supported by this browser.');
     }
+  }
+
+  function addToCalendar(event) {
+    event.preventDefault();
+    var parent = $(this).closest('.activity'),
+        activity = {
+        name: parent.children('.activities__name').text(),
+        venue_name: parent.children('.activities__venue-name').text(),
+        time: parent.children('.activities__time').text(),
+        location: parent.children('.activities__location').text(),
+        description: parent.children('.activities__description').text()
+      };
+
+    $.ajax({url:'/activities', type:'POST', data:activity});
+
   }
 
 })();

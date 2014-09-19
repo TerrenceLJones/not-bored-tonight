@@ -26,7 +26,7 @@ feature "Activity Search Page" do
       expect(find(".search-container__search-results")).to have_content("Name")
       expect(find(".search-container__search-results")).to have_content("Description")
       expect(find(".search-container__search-results")).to have_content("Location")
-      expect(page).to have_css(".search-results__activities")
+      expect(page).to have_css(".search-results")
     end
   end
 
@@ -38,7 +38,7 @@ feature "Activity Search Page" do
     select 'Next Week', from: "search-date"
     VCR.use_cassette('Evenful_Api_Call') do
       click_link "Sports"
-      expect(find(".search-results__activities")).to have_button("Save")
+      expect(find(".search-results")).to have_button("Save")
     end
   end
 

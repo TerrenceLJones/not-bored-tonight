@@ -4,4 +4,5 @@ Fabricator(:activity) do
   venue_name { "First Baptist Church of Hendersonville – Back Field" }
   time { "Every Monday evening @ 6:30pm."}
   location{ "123 Example Rd Nashville, TN 37075"}
+  user_id { 18 }
 end
