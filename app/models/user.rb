@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, on: :create
   validates_uniqueness_of :email
 
+  has_many :activities
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.first_name = auth.info.name.split(' ').first
