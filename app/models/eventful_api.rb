@@ -52,7 +52,7 @@ class EventfulApi
       when "outdoors & recreation"
         return "outdoors_recreation"
       else
-        return params[:searchTerm]
+        return search_term
       end
   end
 

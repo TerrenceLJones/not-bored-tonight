@@ -14,9 +14,9 @@ class ActivitiesController < ApplicationController
   def create
     @activity = current_user.activities.new(activity_creation_params)
     if @activity.save
-      flash.now[:notice] = "It Saved."
+      render "save_to_calendar_success"
     else
-      flash.now[:notice] = "Poo"
+      render "save_to_calendar_failure"
     end
   end
 
