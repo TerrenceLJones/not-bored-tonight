@@ -21,7 +21,7 @@ feature "Activity Search Page" do
     fill_in 'search-location', with: "37215"
     select '10', from: "search-radius"
     select 'Next Week', from: "search-date"
-    VCR.use_cassette('Evenful_Api_Call', record: :new_episodes) do
+    VCR.use_cassette('Evenful_Api_Call_Sports', record: :new_episodes) do
       click_link "Sports"
       expect(find(".search-container__search-results")).to have_content("Name")
       expect(find(".search-container__search-results")).to have_content("Description")
@@ -44,7 +44,7 @@ feature "Activity Search Page" do
     fill_in 'search-location', with: "37215"
     select '10', from: "search-radius"
     select 'Next Week', from: "search-date"
-    VCR.use_cassette('Evenful_Api_Call') do
+    VCR.use_cassette('Evenful_Api_Call_Sports') do
       click_link "Sports"
       expect(find(".search-results")).to have_button("Save")
     end
@@ -56,11 +56,30 @@ feature "Activity Search Page" do
     fill_in 'search-location', with: "37215"
     select '10', from: "search-radius"
     select 'Next Week', from: "search-date"
-    VCR.use_cassette('Evenful_Api_Call') do
-      click_link "Sports"
+    VCR.use_cassette('Evenful_Api_Call_Movies_and_Films', record: :new_episodes) do
+      click_link "Movies & Films"
+      expect(find(".search-results")).to have_content("MOVIES & FILMS")
       expect(find(".search-results")).to have_button("Sign In")
     end
   end
 
+
+  scenario "user saves activity to their calendar", js: :true do
+    skip
+    visit "/"
+    click_link "Log In"
+    fill_in "Email", with: "#{@user.email}"
+    fill_in "Password", with: "#{@user.password}"
+    click_button "Log in"
+    click_link "Find Activities"
+    fill_in 'search-location', with: "37215"
+    select '10', from: "search-radius"
+    select 'Next Week', from: "search-date"
+    VCR.use_cassette('Evenful_Api_Call_Sports') do
+      click_link "Sports"
+      expect(find(".search-results")).to have_button("Save")
+      find("button","Save").click
+    end
+  end
 
 end
