@@ -1,14 +1,11 @@
 class ActivitiesController < ApplicationController
 
-  EVENTFUL_API_SEARCH_TERMS = ["sports", "movies", "performing arts", "music", "museums & attractions", "festivals", "comedy", "conference", "neigborhood activities", "nightlife & singles", "art galleries & exhibits"]
-  YELP_API_SEARCH_TERMS = ["resturants", "grocery", "stores", "malls", "food"]
-
+  EVENTFUL_API_SEARCH_TERMS = ["sports", "movies & films", "performing arts", "music", "museums & attractions", "festivals", "comedy", "conference", "neigborhood activities", "nightlife & singles", "art galleries & exhibits",  "outdoors & recreation", "food & wine", "kids & family"]
 
   def getActivityData
     if EVENTFUL_API_SEARCH_TERMS.include?(activity_search_params[:searchTerm])
       @activities = EventfulApi.getData(activity_search_params)
        render "get_activity", collection: @activities
-    elsif YELP_API_SEARCH_TERMS.include?(activity_search_params[:searchTerm])
     else
       flash.now[:notice] = "There seems to have been an error please choose your activity again"
     end
@@ -22,7 +19,6 @@ class ActivitiesController < ApplicationController
       flash.now[:notice] = "Poo"
     end
   end
-
 
   protected
 

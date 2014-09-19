@@ -1,14 +1,18 @@
 .search-results
+  %h2= @activities[0]["category"].upcase
   - @activities.each do |activity|
     .activity{id: "#{activity["name"]}"}
       %h4 Name:
-      %h5.activities__name= "#{activity["name"]}"
+      %h5.activities__name= activity["name"]
       %h4 Venue Name:
-      %h5.activities__venue-name= "#{activity["venue_name"]}"
+      %h5.activities__venue-name= activity["venue_name"]
       %h4 Date/Time:
-      %h6.activities__time= "#{activity["time"]}"
+      %h6.activities__time= activity["time"]
       %h4 Location:
-      %h6.activities__location= "#{activity["address_string"]}"
+      %h6.activities__location= activity["address_string"]
       %h4 Description:
-      %p.activities__description= "#{activity["description"]}"
-      %button.activities__save-to-calendar#save-activity{:href => "#"} Save
+      .activities__description!= activity["description"]
+      - if user_signed_in?
+        %button.activities__save-to-calendar#save-activity{:href => "#"} Save
+      -else
+        %button.activities__sign-in{:href => "#"} Sign In

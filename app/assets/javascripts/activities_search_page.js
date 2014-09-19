@@ -15,13 +15,15 @@
     event.preventDefault();
 
     var searchParams = {
-        searchTerm: $(this).text().toLowerCase(),
-        searchDate: $("select#search-date option:selected").val().toLowerCase().trim().split(" ").join(""),
-        searchLocation: $("#search-location").val() || coords || "37215",
-        searchRadius: $("select#search-radius option:selected").val()
+      searchTerm: $(this).text().toLowerCase(),
+      searchDate: $("select#search-date option:selected").val().toLowerCase().trim().split(" ").join(""),
+      searchLocation: $("#search-location").val() || coords || "37215",
+      searchRadius: $("select#search-radius option:selected").val()
     };
+
     $.ajax({url:'/getData', type:'GET', data:searchParams});
   }
+
 
   function geoLocation() {
     if (navigator.geolocation) {
