@@ -1,7 +1,7 @@
 .search-results
   %h2= @activities[0]["category"].upcase
   - @activities.each do |activity|
-    .activity{id: "#{activity["name"]}"}
+    .search-results__activity{id: "#{activity["name"]}"}
       %h4 Name:
       %h5.activity__name= activity["name"]
       %h4 Venue Name:

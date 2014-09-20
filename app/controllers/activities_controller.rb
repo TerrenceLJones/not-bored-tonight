@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   EVENTFUL_API_SEARCH_TERMS = ["sports", "movies & films", "performing arts", "music", "museums & attractions", "festivals", "comedy", "conference", "neigborhood activities", "nightlife & singles", "art galleries & exhibits",  "outdoors & recreation", "food & wine", "kids & family"]
 
@@ -13,11 +14,18 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = current_user.activities.new(activity_creation_params)
-    if @activity.save
+    if @activity.save!
       render "save_to_calendar_success"
     else
       render "save_to_calendar_failure"
     end
+  end
+
+  def destroy
+    Activity.find(params["id"]).delete
+    @activities = Activity.all.where(user_id: current_user.id).all
+    # flash[:notice] = "Your activity has been deleted."
+    render "users/activities_update", collection: @activities
   end
 
   protected
@@ -29,7 +37,5 @@ class ActivitiesController < ApplicationController
   def activity_creation_params
     params.permit(:name, :venue_name, :time, :location, :description)
   end
-
-
 
 end
