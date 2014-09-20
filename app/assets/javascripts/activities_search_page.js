@@ -42,17 +42,16 @@
 
   function addToCalendar(event) {
     event.preventDefault();
-    var parent = $(this).closest('.activity'),
+    var parent = $(this).closest('.search-results__activity'),
         activity = {
-        name: parent.children('.activities__name').text(),
-        venue_name: parent.children('.activities__venue-name').text(),
-        time: parent.children('.activities__time').text(),
-        location: parent.children('.activities__location').text(),
-        description: parent.children('.activities__description').text()
+        name: parent.children('.activity__name').text(),
+        venue_name: parent.children('.activity__venue-name').text(),
+        time: parent.children('.activity__time').text(),
+        location: parent.children('.activity__location').text(),
+        description: parent.children('.activity__description').text()
       };
-
+      
     $.ajax({url:'/activities', type:'POST', data:activity});
-
   }
 
 })();
