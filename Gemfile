@@ -4,7 +4,6 @@ ruby '2.1.2'
 
 source 'http://rubygems.org'
 
-
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'haml'
