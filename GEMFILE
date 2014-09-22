@@ -10,7 +10,6 @@ gem 'devise'
 gem 'haml'
 gem 'httparty'
 gem "figaro"
-gem 'foundation-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'omniauth', '~> 1.2.2'
