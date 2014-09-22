@@ -2,15 +2,19 @@
   .header__logo
     %h1
       = link_to "Not Bored Tonight", root_path
-  .header__navigation
+  %nav.header__navigation
     .navigation__browse-menu
       %ul
-        %li= link_to "Find Activities", activities_path
+        %li= link_to "Sports", "#"
+        %li= link_to "Concerts", "#"
+        %li= link_to "Family", "#"
+        %li= link_to "More", activities_path
     .navigation__search
       %input.search-box
     .navigation__user-menu
       %ul
         - if signed_in?
+          %li= link_to "Dashboard", dashboard_path
           %li= link_to "Sign Out", destroy_user_session_path, method: :delete
           %li= link_to "Edit Profile", edit_user_registration_path
         - else

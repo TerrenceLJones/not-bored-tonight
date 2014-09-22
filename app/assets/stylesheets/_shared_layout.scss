@@ -76,11 +76,25 @@ table {
 
 
 
+
 /*
   ========================================
   Footer styles
   ========================================
 */
+
+
+.footer__navigation,
+.footer__terms-and-copyright {
+  display: inline-block;
+}
+
+.footer__navigation li,
+.footer__terms-and-copyright ul,
+.footer__terms-and-copyright li,
+.footer__rights {
+  display: inline-block;
+}
 
 .footer__social-media--facebook {
   background-image: url("icon-facebook.png");
@@ -111,10 +125,6 @@ fieldset.social-media legend {
     padding: 5px 10px;
 }
 
-.footer__navigation, {
-  border-top: 1px solid #aaa;
-}
-.footer__copyright {
+.footer__tag-line {
   border-bottom: 1px solid #aaa;
-  margin-bottom: 15px;
 }
