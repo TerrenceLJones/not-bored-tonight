@@ -7,7 +7,15 @@
       %ul
         %li= link_to "Find Activities", activities_path
     .navigation__search
-      %input.search-box
+      %select.search-box#search-box
+        %option{:disabled => "disabled", :selected => "selected"} Select an Activity
+        %option Music
+        %option Sports
+        %option Performing Arts
+        %option Art Galleries & Exhibits
+        %option Museums & Attractions
+        %option Festivals
+        %option Kids & Family
     .navigation__user-menu
       %ul
         - if signed_in?
