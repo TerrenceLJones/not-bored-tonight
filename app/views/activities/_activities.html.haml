@@ -1,19 +1,24 @@
 - unless @activities.empty?
-  .search-results
-    %h2= @activities[0]["category"].upcase
-    - @activities.each do |activity|
-      .search-results__activity{id: "#{activity["name"]}"}
-        %h4 Name:
-        %h5.activity__name= activity["name"]
-        %h4 Venue Name:
-        %h5.activity__venue-name= activity["venue_name"]
-        %h4 Date/Time:
-        %h6.activity__time= activity["time"]
-        %h4 Location:
-        %h6.activity__location= activity["address_string"]
-        %h4 Description:
-        .activity__description!= activity["description"]
-        - if user_signed_in?
-          %button.activity__save-to-calendar#save-activity{:href => "#"} Save
-        -else
-          %button.activity__sign-in{:href => "#"} Sign In
+  - if DateTime.now < Date.parse(@activities[0]["date"])
+    .search-results
+      %h2= @activities[0]["category"].upcase
+      - @activities.each do |activity|
+        .search-results__activity{id: "#{activity["name"]}"}
+          %h4 Name:
+          %h5.activity__name= activity["name"]
+          %h4 Venue Name:
+          %h5.activity__venue-name= activity["venue_name"]
+          %h4 Date:
+          %h6.activity__date= activity["date"]
+          %h4 Time:
+          %h6.activity__time= activity["time"].strip
+          %h4 Location:
+          %h6.activity__location= activity["address_string"]
+          %h4 Description:
+          .activity__description!= activity["description"]
+          - if user_signed_in?
+            %button.activity__save-to-calendar#save-activity{:href => "#"} Save
+          -else
+            %button.activity__save-to-calendar--disabled{:href => "#", disabled: "disabled"} Save
+  - else
+    - flash.now[:notice] = "Sorry, but there were no results based on your search."

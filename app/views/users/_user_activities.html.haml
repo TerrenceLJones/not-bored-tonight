@@ -1,15 +1,18 @@
 - unless @activities.blank?
   %h2= @activities[0]["category"]
   - @activities.each do |activity|
-    .dashboard__activity{ id: "#{activity["name"]}" }
-      %h4 Name:
-      %h5.activity__name= activity["name"]
-      %h4 Venue Name:
-      %h5.activity__venue-name= activity["venue_name"]
-      %h4 Date/Time:
-      %h6.activity__time= activity["time"]
-      %h4 Location:
-      %h6.activity__location= activity["address_string"]
-      %h4 Description:
-      .activity__description!= activity["description"]
-      .activity__delete-from-calendar#delete-activity= link_to 'Delete', activity_path(activity["id"]), :method => :delete, :remote => true
+    - unless DateTime.now > Date.parse(activity["date"])
+      .dashboard__activity{ id: "#{activity["name"]}" }
+        %h4 Name:
+        %h5.activity__name= activity["name"]
+        %h4 Venue Name:
+        %h5.activity__venue-name= activity["venue_name"]
+        %h4 Date:
+        %h6.activity__date= activity["date"]
+        %h4 Time:
+        %h6.activity__time= activity["time"]
+        %h4 Location:
+        %h6.activity__location= activity["address_string"]
+        %h4 Description:
+        .activity__description!= activity["description"]
+        .activity__delete-from-calendar#delete-activity= link_to 'Delete', activity_path(activity["id"]), :method => :delete, :remote => true
