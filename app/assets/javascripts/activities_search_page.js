@@ -30,6 +30,7 @@
         activity = {
         name: parent.children('.activity__name').text(),
         venue_name: parent.children('.activity__venue-name').text(),
+        date: parent.children('.activity__date').text(),
         time: parent.children('.activity__time').text(),
         location: parent.children('.activity__location').text(),
         description: parent.children('.activity__description').text()

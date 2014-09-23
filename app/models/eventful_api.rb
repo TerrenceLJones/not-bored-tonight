@@ -7,13 +7,15 @@ class EventfulApi
     res = HTTParty.get("http://api.eventful.com/json/events/search?c=" + EventfulApi.sanitize_search_term_params(params[:searchTerm]) + "&l=" + params[:searchLocation] + "&within=" + params[:searchRadius] + "&date=" + params[:searchDate] + "&app_key=#{ENV["eventful_api_key"]}")
     data = JSON.parse(res.body)
     events = []
+
     begin
       data["events"]["event"].each do |e|
         event = {}
         event["category"] = params[:searchTerm]
         event["name"] = e["title"]
         event["description"] = e["description"]
-        event["time"] = e["start_time"]
+        event["date"] = DateTime.parse(e["start_time"]).strftime("%B %d, %Y")
+        event["time"] = DateTime.parse(e["start_time"]).strftime("%l:%M %p")
         event["venue_name"] = e["venue_name"]
         event["address"] = e["venue_address"]
         event["city"] = e["city"]

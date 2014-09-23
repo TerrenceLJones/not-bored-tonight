@@ -5,11 +5,11 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = []
-    if EVENTFUL_API_SEARCH_TERMS.include?(params[:searchTerm])
+    if EVENTFUL_API_SEARCH_TERMS.include?(activity_search_params[:searchTerm])
       @activities = EventfulApi.getData(params)
     end
 
-    if params[:isHeaderSearchSelector] == "true"
+    if activity_search_params[:isHeaderSearchSelector] == "true"
       if @activities.empty?
         flash[:notice] = "Sorry, but there were no results based on your search."
       end
@@ -50,7 +50,7 @@ class ActivitiesController < ApplicationController
   end
 
   def activity_creation_params
-    params.permit(:name, :venue_name, :time, :location, :description)
+    params.permit(:name, :venue_name, :time, :date, :location, :description)
   end
 
 end
