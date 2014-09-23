@@ -5,20 +5,11 @@
   %nav.header__navigation
     .navigation__browse-menu
       %ul
-        %li= link_to "Sports", "#"
-        %li= link_to "Concerts", "#"
-        %li= link_to "Family", "#"
-        %li= link_to "More", activities_path
-    .navigation__search
-      %select.search-box#search-box
-        %option{:disabled => "disabled", :selected => "selected"} Select an Activity
-        %option Music
-        %option Sports
-        %option Performing Arts
-        %option Art Galleries & Exhibits
-        %option Museums & Attractions
-        %option Festivals
-        %option Kids & Family
+        %li.browse-menu__query-item= link_to "Sports", "#"
+        %li.browse-menu__query-item= link_to "Music", "#"
+        %li.browse-menu__query-item= link_to "Family", "#"
+        %li.browse-menu__query-item= link_to "Festivals", "#"
+        %li.browse-menu__query-item= link_to "More", activities_path
     .navigation__user-menu
       %ul
         - if signed_in?
