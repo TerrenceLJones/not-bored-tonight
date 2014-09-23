@@ -20,5 +20,11 @@
             %button.activity__save-to-calendar#save-activity{:href => "#"} Save
           -else
             %button.activity__save-to-calendar--disabled{:href => "#", disabled: "disabled"} Save
+            %p
+              Want to save this event to your calender?
+              %a{:href => "#{new_user_session_path}"} Sign In
+              or
+              %a{:href => "#{new_user_registration_path}"} Sign Up
+              for an account
   - else
     - flash.now[:notice] = "Sorry, but there were no results based on your search."
