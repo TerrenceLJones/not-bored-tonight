@@ -1,4 +1,3 @@
-
 (function(){
   "use strict"
   $(document).ready(init);
@@ -18,26 +17,11 @@
       searchTerm: $(this).text().toLowerCase(),
       searchDate: $("select#search-date option:selected").val().toLowerCase().trim().split(" ").join(""),
       searchLocation: $("#search-location").val() || coords || "37215",
-      searchRadius: $("select#search-radius option:selected").val()
+      searchRadius: $("select#search-radius option:selected").val(),
+      isHeaderSearchSelector: false
     };
 
-    $.ajax({url:'/getData', type:'GET', data:searchParams});
-  }
-
-
-  function geoLocation() {
-    if (navigator.geolocation) {
-      var options = {enableHighAccuracy: true, timeout: 60000, maximumAge: 0};
-      navigator.geolocation.getCurrentPosition( function (p) {
-        var lat = p.coords.latitude * 1,
-            lng = p.coords.longitude * 1;
-        coords = [lat,lng];
-        coords =  coords.join(',');
-      },function (e){console.log(e), options});
-    }
-    else {
-        alert('Geolocation is not supported by this browser.');
-    }
+    $.ajax({url:"/activities", type:'GET', data:searchParams, dataType:"script"});
   }
 
   function addToCalendar(event) {
@@ -46,11 +30,12 @@
         activity = {
         name: parent.children('.activity__name').text(),
         venue_name: parent.children('.activity__venue-name').text(),
+        date: parent.children('.activity__date').text(),
         time: parent.children('.activity__time').text(),
         location: parent.children('.activity__location').text(),
         description: parent.children('.activity__description').text()
       };
-      
+
     $.ajax({url:'/activities', type:'POST', data:activity});
   }
 

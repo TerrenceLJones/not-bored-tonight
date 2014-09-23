@@ -4,7 +4,6 @@ ruby '2.1.2'
 
 source 'http://rubygems.org'
 
-
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'haml'
@@ -37,4 +36,8 @@ group :test do
   gem 'shoulda'
   gem 'vcr'
   gem 'webmock'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

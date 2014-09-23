@@ -1,4 +1,10 @@
 %h2 User Dashboard
 
+.sort
+  %button.sort{:href => "#"} Name
+  %button.sort{:href => "#"} Date
+  %button.sort{:href => "#"} Venue
+
+
 .user-activities
   = render "user_activities"

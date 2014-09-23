@@ -3,12 +3,27 @@ class ActivitiesController < ApplicationController
 
   EVENTFUL_API_SEARCH_TERMS = ["sports", "movies & films", "performing arts", "music", "museums & attractions", "festivals", "comedy", "conference", "neigborhood activities", "nightlife & singles", "art galleries & exhibits",  "outdoors & recreation", "food & wine", "kids & family"]
 
-  def getActivityData
+  def index
+    @activities = []
     if EVENTFUL_API_SEARCH_TERMS.include?(activity_search_params[:searchTerm])
-      @activities = EventfulApi.getData(activity_search_params)
-       render "get_activity", collection: @activities
+      @activities = EventfulApi.getData(params)
+    end
+
+    if activity_search_params[:isHeaderSearchSelector] == "true"
+      if @activities.empty?
+        flash[:notice] = "Sorry, but there were no results based on your search."
+      end
+      render :js => "window.location = '#{activities_path(params.merge(isHeaderSearchSelector:'false'))}'"
     else
-      flash.now[:notice] = "There seems to have been an error please choose your activity again"
+      respond_to do |format|
+        format.html
+        format.js {
+          if @activities.empty?
+            flash.now[:notice] = "Sorry, but there were no results based on your search."
+          end
+          render "get_activity", collection: @activities
+          }
+      end
     end
   end
 
@@ -31,11 +46,11 @@ class ActivitiesController < ApplicationController
   protected
 
   def activity_search_params
-    params.permit(:searchTerm, :searchDate, :searchLocation, :searchRadius)
+    params.permit(:searchTerm, :searchDate, :searchLocation, :searchRadius, :isHeaderSearchSelector)
   end
 
   def activity_creation_params
-    params.permit(:name, :venue_name, :time, :location, :description)
+    params.permit(:name, :venue_name, :time, :date, :location, :description)
   end
 
 end
