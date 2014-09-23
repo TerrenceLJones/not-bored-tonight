@@ -1,1 +1,7 @@
-$('.search-container__search-results').html('<%= j render "activities" %>')
+<% if notice %>
+  $(".notice").empty().append("<p><%= notice %></p>");
+  $("#search-results").empty();
+<% else %>
+  $(".notice").empty();
+  $('#search-results').empty().html('<%= j render "activities" %>');x
+<% end %>
