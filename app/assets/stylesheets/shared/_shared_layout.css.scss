@@ -1,0 +1,61 @@
+
+/*
+  ========================================
+  Header styles
+  ========================================
+*/
+
+/* This styling can be found in `stylesheets/shared/_header.scss` */
+
+
+/*
+  ========================================
+  Footer styles
+  ========================================
+*/
+
+
+.footer__navigation,
+.footer__terms-and-copyright {
+  display: inline-block;
+}
+
+.footer__navigation li,
+.footer__terms-and-copyright ul,
+.footer__terms-and-copyright li,
+.footer__rights {
+  display: inline-block;
+}
+
+.footer__social-media--facebook {
+  background-image: url("icon-facebook.png");
+  background-size: cover;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+.footer__social-media--twitter {
+  background-image: url("icon-twitter.png");
+  background-size: cover;
+  display: inline-block;
+  height: 50px;
+  width: 50px;
+}
+
+fieldset.social-media {
+    border-top: 1px solid #aaa;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    display: block;
+    text-align: center;
+}
+
+fieldset.social-media legend {
+    padding: 5px 10px;
+}
+
+.footer__tag-line {
+  border-bottom: 1px solid #aaa;
+}
