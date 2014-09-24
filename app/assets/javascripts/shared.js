@@ -3,7 +3,7 @@
   $(document).ready(init);
 
   function init(){
-    $(".browse-menu__query-item").on("click",searchActivities);
+    $(".browse-menu__query-item a").on("click",searchActivities);
   }
 
   function searchActivities(event) {
@@ -29,7 +29,7 @@
       else {
         $.ajax({url:"/activities", type:'GET', data:searchParams});
       }
-      
+
     }
   }
 

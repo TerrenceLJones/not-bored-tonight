@@ -1,20 +1,32 @@
-%header.header
-  .header__logo
-    %h1
-      = link_to "Not Bored Tonight", root_path
-  %nav.header__navigation
-    .navigation__browse-menu
-      %ul
-        %li.browse-menu__query-item= link_to "Sports", "#"
-        %li.browse-menu__query-item= link_to "Music", "#"
-        %li.browse-menu__query-item= link_to "Family", "#"
-        %li.browse-menu__query-item= link_to "Festivals", "#"
-        %li.browse-menu__query-item= link_to "More", activities_path
-    .navigation__user-menu
-      %ul
+%header.header__navigation
+  .navigation-wrapper
+    -# .navigation__logo
+    -#     %h1
+    -#       = link_to "Not Bored Tonight", root_path
+    .nav
+      %ul#navigation-menu
+        %li.nav-link
+          = link_to "Home", "/"
+        %li.browse-menu__query-item.nav-link
+          = link_to "Sports", "#"
+        %li.browse-menu__query-item.nav-link
+          = link_to "Music", "#"
+        %li.browse-menu__query-item.nav-link
+          = link_to "Family", "#"
+        %li.browse-menu__query-item.nav-link
+          = link_to "Festivals", "#"
+        %li.browse-menu__query-item.nav-link
+          = link_to "More", activities_path
         - if signed_in?
-          %li= link_to "Dashboard", dashboard_path
-          %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-          %li= link_to "Edit Profile", edit_user_registration_path
+          %li.nav-link.more
+            %a #{@user.first_name}
+            %ul.submenu
+              %li
+                = link_to "Dashboard", dashboard_path
+              %li
+                = link_to "Sign Out", destroy_user_session_path, method: :delete
+              %li
+                = link_to "Edit Profile", edit_user_registration_path
         - else
-          %li= link_to "Log In", new_user_session_path
+          %li.nav-link
+            = link_to "Log In", new_user_session_path

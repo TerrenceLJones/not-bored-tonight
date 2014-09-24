@@ -1,17 +1,22 @@
-%footer.footer
-  .footer__social-media
-    %fieldset.social-media
-      %legend Follow Us
-    .footer__social-media--facebook
-    .footer__social-media--twitter
-  .footer__tag-line
-    %h3 Bored? Not now!
-  %nav.footer__navigation
+%footer.footer-2
+  .footer-logo
+    %img{ alt: "Logo image", src: "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png" }/
+  %ul
+    %li
+      = link_to "About Us", '#'
+    %li
+      = link_to "Blog", '#'
+    %li
+  .footer-secondary-links
     %ul
-      %li= link_to "About Us", '#'
-      %li= link_to "Blog", '#'
-  .footer__terms-and-copyright
-    %ul
-      %li= link_to "Term of Use", '#'
-      %li= link_to "Privacy Policy", '#'
-    %small.footer__rights &copy; NotBoredTonight.com. All rights reserved.
+      %li
+        = link_to "Term and Condtions", '#'
+      %li
+        = link_to "Privacy Policy", '#'
+    %ul.footer-social
+      %li
+        %a{ href: "#" }
+          %img{ alt: "Facebook", src: "assets/icon-facebook.png" }/
+      %li
+        %a{ href: "#" }
+          %img{ alt: "Twitter", src: "assets/icon-twitter.png" }/
