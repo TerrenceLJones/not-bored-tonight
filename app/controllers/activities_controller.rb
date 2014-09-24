@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
   EVENTFUL_API_SEARCH_TERMS = ["sports", "movies & films", "performing arts", "music", "museums & attractions", "festivals", "comedy", "conference", "neigborhood activities", "nightlife & singles", "art galleries & exhibits",  "outdoors & recreation", "food & wine", "kids & family"]
 
   def index
+    @user = current_user
     @activities = []
     if EVENTFUL_API_SEARCH_TERMS.include?(activity_search_params[:searchTerm])
       @activities = EventfulApi.getData(params)
