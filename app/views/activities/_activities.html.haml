@@ -1,30 +1,37 @@
 - unless @activities.empty?
   - if DateTime.now < Date.parse(@activities[0]["date"])
+    %h2= @activities[0]["category"].upcase
+
     .search-results
-      %h2= @activities[0]["category"].upcase
       - @activities.each do |activity|
-        .search-results__activity{id: "#{activity["name"]}"}
-          %h4 Name:
-          %h5.activity__name= activity["name"]
-          %h4 Venue Name:
+
+        .search-results__activity{ id: "#{activity["name"]}" }
+
+          %h3.activity__name= activity["name"]
+
+          %h4 Venue:
           %h5.activity__venue-name= activity["venue_name"]
-          %h4 Date:
-          %h6.activity__date= activity["date"]
-          %h4 Time:
-          %h6.activity__time= activity["time"].strip
-          %h4 Location:
           %h6.activity__location= activity["address_string"]
-          %h4 Description:
-          .activity__description!= activity["description"]
-          - if user_signed_in?
-            %button.activity__save-to-calendar#save-activity{:href => "#"} Save
-          -else
-            %button.activity__save-to-calendar--disabled{:href => "#", disabled: "disabled"} Save
-            %p
-              Want to save this event to your calender?
-              %a{:href => "#{new_user_session_path}"} Sign In
-              or
-              %a{:href => "#{new_user_registration_path}"} Sign Up
-              for an account
+
+          %h4 When:
+          %h6.activity__date-time= " #{activity["date"]} @ #{activity["time"].strip}"
+
+          - unless "#{activity["description"]}".length == 0
+            .activity__more-info
+              %a{ id: "more-info"} More Information
+              %p.activity__description.hidden!= activity["description"].lstrip
+
+          .save-to-calendar
+            - if user_signed_in?
+              %button.save-to-calendar__signed-in#save-activity{:href => "#"} Save
+
+            -else
+              %button.save-to-calendar__disabled{:href => "#", disabled: "disabled"} Save
+              %p
+                Want to save this event to your calender?
+                %a{ href: "#{new_user_session_path}" } Sign In
+                or
+                %a{ href: "#{new_user_registration_path}"} Sign Up
+                for an account
   - else
     - flash.now[:notice] = "Sorry, but there were no results based on your search."

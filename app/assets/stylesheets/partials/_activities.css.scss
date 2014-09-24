@@ -1,12 +1,36 @@
-.navigation__title--stay-in,
-.navigation__title--go-out {
-  display: inline-block;
+.search-container, {
+  margin-top: 20px;
 }
 
-.navigation__stay-in,
-.navigation__go-out {
-  display: none;
+.search-container__navigation {
+  @include span-columns(3);
 }
-.active {
-  display: initial;
+
+.search-container__search-results {
+  @include span-columns(9);
+}
+
+.activity__venue-name,
+.activity__location,
+.activity__date-time,
+.activity__description {
+  margin: 10px auto;
+  text-indent: 50px
+}
+
+.search-results__activity {
+  margin-bottom: 25px;
+}
+
+.save-to-calendar {
+  margin-top: 10px;
+}
+
+.navigation__query-choices,
+.search-results__activity:first-child {
+  margin-top: 15px; 
+}
+
+.hidden {
+  display: none;
 }
