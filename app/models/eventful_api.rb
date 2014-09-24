@@ -13,7 +13,7 @@ class EventfulApi
         event = {}
         event["category"] = params[:searchTerm]
         event["name"] = e["title"]
-        event["description"] = e["description"]
+        event["description"] = ActionView::Base.full_sanitizer.sanitize(e["description"])
         event["date"] = DateTime.parse(e["start_time"]).strftime("%B %d, %Y")
         event["time"] = DateTime.parse(e["start_time"]).strftime("%l:%M %p")
         event["venue_name"] = e["venue_name"]
