@@ -1,33 +1,54 @@
-%h2 Find Activities
 .search-container
-  .search-container__parameters
-    %label Zip Code
-    %input#search-location
-    %label Search Radius
-    %select#search-radius
-      - ((5..100).step(5).to_a).each do |i|
-        %option #{i}
-    %select#search-date
-      %option Today
-      %option Tomorrow
-      %option This Week
-      %option Next Week
   .search-container__navigation
-    %ul
-      %li.query-item= link_to "Sports", '#'
-      %li.query-item= link_to "Food & Wine", '#'
-      %li.query-item= link_to "Movies & Films", '#'
-      %li.query-item= link_to "Music", '#'
-      %li.query-item= link_to "Art Galleries & Exhibits"
-      %li.query-item= link_to "Museums & Attractions"
-      %li.query-item= link_to "Performing Arts", '#'
-      %li.query-item= link_to "Festivals", '#'
-      %li.query-item= link_to "Neigborhood Activities", '#'
-      %li.query-item= link_to "Nightlife & Singles", '#'
-      %li.query-item= link_to "Comedy Shows", '#'
-      %li.query-item= link_to "Various Meetups", '#'
-      %li.query-item= link_to "Conferences", '#'
-      %li.query-item= link_to "Outdoors & Recreation", '#'
-      %li.query-item= link_to "Kids & Family", '#'
+    %h2 Find Activities
+    .navigation__query-choices
+      %button.query-item{ href: "#" } Sports
+      %button.query-item{ href: "#" } Music
+      %button.query-item{ href: "#" } Food & Wine
+      %button.query-item{ href: "#" } Museums & Attractions
+      %button.query-item{ href: "#" } Festivals
+      %button.query-item{ href: "#" } Kids & Family
+      %ul.accordion
+        %li
+          %button.js-accordion-trigger{href: "#"} More Activities
+          %ul.submenu
+            %li
+              %button.query-item{ href: "#" } Art Galleries & Exhibits
+            %li
+              %button.query-item{ href: "#" } Performing Arts
+            %li
+              %button.query-item{ href: "#" } Movies & Films
+            %li
+              %button.query-item{ href: "#" } Neigborhood Activities
+            %li
+              %button.query-item{ href: "#" } Nightlife & Singles
+            %li
+              %button.query-item{ href: "#" } Comedy Shows
+            %li
+              %button.query-item{ href: "#" } Various Meetups
+            %li
+              %button.query-item{ href: "#" } Conferences
+            %li
+              %button.query-item{ href: "#" } Outdoors & Recreation
+    .navigation__parameters
+      %ul.accordion
+        %li
+          %button.js-accordion-trigger{href: "#"} Search Parameters
+          %ul.submenu
+            %li
+              %label.param-label Zip Code
+              %input{ autofocus: true, id: "search-location", class: "params" }
+            %li
+              %label.param-label Search Radius
+              %select{ id: "search-radius", class: "params" }
+                - ((5..100).step(5).to_a).each do |i|
+                  %option #{i}
+            %li
+              %label.param-label How soon?
+              %select{ id: "search-date", class: "params" }
+                %option Today
+                %option Tomorrow
+                %option This Week
+                %option Next Week
   .search-container__search-results#search-results
     = render "activities"

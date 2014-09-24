@@ -1,10 +1,8 @@
-@import 'shared/shared_layout';
 @import 'shared/reset';
 
 @import "vendor/bourbon/bourbon";
 
 @import "vendor/neat/neat";
-@import "vendor/neat/neat-helpers";
 
 @import "vendor/bitters/grid-settings";
 @import "vendor/bitters/variables";
@@ -16,6 +14,9 @@
 
 @import "vendor/refills/header";
 @import "vendor/refills/footer";
+@import "vendor/refills/accordion";
 
 @import 'partials/activities';
 @import 'partials/home';
+
+@import 'shared/shared_layout';
