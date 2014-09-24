@@ -14,7 +14,8 @@
     %p.alert= alert
 
     .wrapper-for-content-outside-of-footer
-      .contents= yield
+      .contents
+        = yield
       .push
 
     = render 'layouts/footer'
