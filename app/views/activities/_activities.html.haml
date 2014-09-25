@@ -1,7 +1,6 @@
 - unless @activities.empty?
   - if DateTime.now < Date.parse(@activities[0]["date"])
     %h2= @activities[0]["category"].upcase
-
     .search-results
       - @activities.each do |activity|
 
@@ -9,27 +8,27 @@
 
           %h3.activity__name= activity["name"]
 
-          %h4 Venue:
+          %h4.activity__venue-name--label Venue:
           %h5.activity__venue-name= activity["venue_name"]
           %h6.activity__location= activity["address_string"]
 
-          %h4 When:
+          %h4.activity__date-time--label When:
           %h6.activity__date-time= " #{activity["date"]} @ #{activity["time"].strip}"
 
           - unless "#{activity["description"]}".length == 0
             .activity__more-info
-              %a{ id: "more-info"} More Information
-              %p.activity__description.hidden!= activity["description"].lstrip
+              %a{ id: "more-info" } More Information
+              %p.activity__description.hidden= activity["description"].lstrip
 
           .save-to-calendar
             - if user_signed_in?
-              %button.save-to-calendar__signed-in#save-activity{:href => "#"} Save
+              %button.save-to-calendar__signed-in#save-activity{:href => "#", remote: :true} Save
 
             -else
               %button.save-to-calendar__disabled{:href => "#", disabled: "disabled"} Save
-              %p
+              %p.require-sign-in
                 Want to save this event to your calender?
-                %a{ href: "#{new_user_session_path}" } Sign In
+                %a{ href: "#" } Sign In
                 or
                 %a{ href: "#{new_user_registration_path}"} Sign Up
                 for an account
