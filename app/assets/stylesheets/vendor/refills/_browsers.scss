@@ -73,7 +73,7 @@ $browser-content-background-3: #F0F0F0;
   }
 
   .browser-content {
-    background: url(activities-search-page1.png);
+    background: asset-url(activities-search-page1.png);
     background-color: $browser-content-background-1;
     background-position: left;
     background-repeat: no-repeat;
@@ -92,7 +92,7 @@ $browser-content-background-3: #F0F0F0;
   }
 
   .browser-content {
-    background: url(user-dashboard-page.png);
+    background: asset-url(user-dashboard-page.png);
     background-color: $browser-content-background-2;
     background-position: top;
     background-repeat: no-repeat;
@@ -109,7 +109,7 @@ $browser-content-background-3: #F0F0F0;
   }
 
   .browser-content {
-    background: url(activities-search-page2.png);
+    background: asset-url(activities-search-page2.png);
     background-color: $browser-content-background-3;
     background-position: -110px;
     background-repeat: no-repeat;
