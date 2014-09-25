@@ -4,6 +4,7 @@
 
   function init(){
     $(".sort").on('click', sortActivities);
+    $(".user-activities").on('click', ".card", showDescription);
   }
 
   function sortActivities() {
@@ -21,7 +22,7 @@
 
     else if (type == "date") {
       orderedByDateActivities = $activities.sort(function(a,b){
-        return $(a).find(".activity__date").text() > $(b).find(".activity__date").text();
+        return (new Date($(a).find(".activity__date").text())) > (new Date($(b).find(".activity__date").text()));
       });
       $(".user-activities").empty().html(orderedByDateActivities);
     }
@@ -33,4 +34,12 @@
       $(".user-activities").empty().html(orderedByDateActivities);
     }
   }
+
+
+  function showDescription() { 
+    var selectedActvity = $(this).closest('.user-activity');
+    var description = selectedActvity.find('.activity__description').toggleClass("hidden");
+  }
+
+
 })();
