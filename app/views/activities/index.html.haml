@@ -10,7 +10,7 @@
       %button.query-item{ href: "#" } Kids & Family
       %ul.accordion
         %li
-          %button.js-accordion-trigger{href: "#"} More Activities
+          %button.more-activities-button.js-accordion-trigger{href: "#"} More Activities
           %ul.submenu
             %li
               %button.query-item{ href: "#" } Art Galleries & Exhibits
@@ -33,7 +33,7 @@
     .navigation__parameters
       %ul.accordion
         %li
-          %button.js-accordion-trigger{href: "#"} Search Parameters
+          %button.search-parameters.js-accordion-trigger{href: "#"} Search Parameters
           %ul.submenu
             %li
               %label.param-label Zip Code
@@ -42,13 +42,16 @@
               %label.param-label Search Radius
               %select{ id: "search-radius", class: "params" }
                 - ((5..100).step(5).to_a).each do |i|
-                  %option #{i}
+                  - if i == 20
+                    %option{ selected: "selected" } 20
+                  - else
+                    %option #{i}
             %li
               %label.param-label How soon?
               %select{ id: "search-date", class: "params" }
                 %option Today
                 %option Tomorrow
-                %option This Week
+                %option{ selected: "selected" } This Week
                 %option Next Week
   .search-container__search-results#search-results
     = render "activities"
