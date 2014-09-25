@@ -14,21 +14,22 @@
 
     if (type == "name") {
       orderedByDateActivities = $activities.sort(function(a,b){
-        return $(a).find(".activity__name").text() > $(b).find(".activity__name").text();
+        return $(a).find(".user-activity__name").text().trim() > $(b).find(".user-activity__name").text().trim();
       });
+
       $(".user-activities").empty().append(orderedByDateActivities);
     }
 
     else if (type == "date") {
       orderedByDateActivities = $activities.sort(function(a,b){
-        return (new Date($(a).find(".activity__date").text())) > (new Date($(b).find(".activity__date").text()));
+        return new Date($(a).find(".user-activity__date").text()) > new Date($(b).find(".user-activity__date").text());
       });
       $(".user-activities").empty().append(orderedByDateActivities);
     }
 
     else if (type == "venue") {
       orderedByDateActivities = $activities.sort(function(a,b){
-        return $(a).find(".activity__venue-name").text() > $(b).find(".activity__venue-name").text();
+        return $(a).find(".user-activity__venue-name").text() > $(b).find(".user-activity__venue-name").text();
       });
       $(".user-activities").empty().append(orderedByDateActivities);
     }
