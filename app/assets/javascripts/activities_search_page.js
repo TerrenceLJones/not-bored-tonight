@@ -35,9 +35,9 @@
         date: parent.children('.activity__date-time').text().split(" @ ")[0],
         time: parent.children('.activity__date-time').text().split(" @ ")[1],
         location: parent.children('.activity__location').text(),
-        description: parent.children('.activity__description').text()
+        description: parent.find('.activity__description').text()
       };
-
+      
     $.ajax({url:'/activities', type:'POST', data:activity, dataType:'html', success:function(){
       parent.find(".save-to-calendar__signed-in").addClass("saved").html("&#x2713; Saved!").prop("disabled",true);
     }});
