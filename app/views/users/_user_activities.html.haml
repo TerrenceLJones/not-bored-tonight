@@ -1,18 +1,23 @@
-- unless @activities.blank?
-  %h2= @activities[0]["category"]
-  - @activities.each do |activity|
-    - unless DateTime.now > Date.parse(activity["date"])
-      .dashboard__activity{ id: "#{activity["name"]}" }
-        %h4 Name:
-        %h5.activity__name= activity["name"]
-        %h4 Venue Name:
-        %h5.activity__venue-name= activity["venue_name"]
-        %h4 Date:
-        %h6.activity__date= activity["date"]
-        %h4 Time:
-        %h6.activity__time= activity["time"]
-        %h4 Location:
-        %h6.activity__location= activity["address_string"]
-        %h4 Description:
-        .activity__description!= activity["description"]
-        .activity__delete-from-calendar#delete-activity= link_to 'Delete', activity_path(activity["id"]), :method => :delete, :remote => true
+- unless @activities.empty?
+  .cards
+    %h2= @activities[0]["category"]
+    - @activities.each do |activity|
+      - unless DateTime.now > Date.parse(activity["date"])
+        .card.user-activity{ id: "#{activity["name"]}" }
+          .activity__delete-from-calendar= link_to 'X', activity_path(activity["id"]), :method => :delete, :remote => true
+          .card-image
+            %img{alt: "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}/
+          .card-header
+            %h5.activity__name= activity["name"]
+          .card-copy
+            %h4 Venue:
+            %h5= activity["venue_name"]
+            %h6= activity["address_string"]
+
+            %h4 When:
+            %h6= " #{activity["date"]} @ #{activity["time"].strip}"
+
+            - unless "#{activity["description"]}".length == 0
+              .activity__more-info
+                %a{ id: "more-info" } More Information
+                %p.activity__description.hidden= activity["description"].lstrip
