@@ -14,3 +14,14 @@
     margin: 0;
   }
 }
+
+.user-activity__venue-name,
+.user-activity__date,
+.activity__description.hidden {
+  text-indent: 45px;
+  margin-top: 5px;
+}
+
+.user-activity__date {
+  margin-bottom: 7px; 
+}

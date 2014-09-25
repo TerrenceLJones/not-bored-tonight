@@ -8,16 +8,19 @@
           .card-image
             %img{alt: "", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/mountains.png"}/
           .card-header
-            %h5.activity__name= activity["name"]
+            .user-activity__name
+              %h5= activity["name"]
           .card-copy
             %h4 Venue:
-            %h5= activity["venue_name"]
-            %h6= activity["address_string"]
+            .user-activity__venue-name
+              %h5= activity["venue_name"]
+              %h6= activity["address_string"]
 
             %h4 When:
-            %h6= " #{activity["date"]} @ #{activity["time"].strip}"
-
+            .user-activity__date
+              %h6= " #{activity["date"]} @ #{activity["time"].strip}"
             - unless "#{activity["description"]}".length == 0
-              .activity__more-info
+              .user-activity__more-info
                 %a{ id: "more-info" } More Information
-                %p.activity__description.hidden= activity["description"].lstrip
+                .activity__description.hidden
+                  %p= activity["description"].lstrip
