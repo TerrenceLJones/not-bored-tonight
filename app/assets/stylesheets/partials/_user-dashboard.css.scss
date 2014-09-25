@@ -1,0 +1,16 @@
+.dashboard-header,
+.sort-container {
+  display: inline-block;
+}
+
+.dashboard-header {
+  margin-right: 520px;
+}
+
+.sort {
+  margin-right: 15px;
+
+  &:last-child {
+    margin: 0;
+  }
+}
