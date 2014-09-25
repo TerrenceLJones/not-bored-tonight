@@ -1,12 +1,10 @@
 %header.header__navigation
   .navigation-wrapper
-    -# .navigation__logo
-    -#     %h1
-    -#       = link_to "Not Bored Tonight", root_path
+    .navigation__logo
+      .logo.nav-link
+        %h1= link_to "Not Bored Tonight", root_path
     .nav
       %ul#navigation-menu
-        %li.nav-link
-          = link_to "Home", "/"
         %li.browse-menu__query-item.nav-link
           = link_to "Sports", "#"
         %li.browse-menu__query-item.nav-link
@@ -18,7 +16,7 @@
         %li.browse-menu__query-item.nav-link
           = link_to "More", activities_path
         - if signed_in?
-          %li.nav-link.more
+          %li.nav-link.more.user
             %a #{@user.first_name}
             %ul.submenu
               %li

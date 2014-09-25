@@ -33,10 +33,22 @@ header.header__navigation {
     padding-left: $navigation-padding;
     padding-right: 2em;
 
+    h1 {
+      margin-top: 16px;
+      font-size: 20px;
+     a {
+        color: #EC796A;
+      }
+    }
+
     img {
       max-height: $navigation-height;
       padding: .8em 0;
     }
+  }
+
+  .user{
+    margin-left: 350px;
   }
 
   // Mobile view
