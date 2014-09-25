@@ -6,7 +6,7 @@
     geoLocation();
     $(".query-item").on('click', getSearchResults);
     $("#search-results").on('click', "#save-activity", addToCalendar);
-    $("#search-results").on('click', "#more-info", showDescription)
+    $("#search-results").on('click', "#more-info", showDescription);
   }
 
   var coords;
@@ -38,7 +38,10 @@
         description: parent.children('.activity__description').text()
       };
 
-    $.ajax({url:'/activities', type:'POST', data:activity});
+    $.ajax({url:'/activities', type:'POST', data:activity, dataType:'html', success:function(){
+      parent.find(".save-to-calendar__signed-in").addClass("saved").html("&#x2713; Saved!").prop("disabled",true);
+    }});
+
   }
 
   function showDescription() {

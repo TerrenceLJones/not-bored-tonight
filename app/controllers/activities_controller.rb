@@ -31,9 +31,11 @@ class ActivitiesController < ApplicationController
   def create
     @activity = current_user.activities.new(activity_creation_params)
     if @activity.save!
-      render "save_to_calendar_success"
+      respond_to do |format|
+        format.json  { head :ok }
+      end
     else
-      render "save_to_calendar_failure"
+      flash.now[:notice] = "Sorry for the inconvience, but this activity can not be saved at this time."
     end
   end
 
