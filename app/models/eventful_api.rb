@@ -37,6 +37,8 @@ class EventfulApi
   def self.sanitize_search_term_params(search_term)
     # add `return` to add clarity
     case search_term
+      when "comedy shows"
+        return "comedy"
       when "movies & films"
         return "movies_film"
       when "performing arts"
