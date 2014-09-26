@@ -2,13 +2,11 @@
 
 Website: http://not-bored-tonight.herokuapp.com/
 
-This is an web application created to allow users to find various activities in
+This is a web application created to allow users to find various activities in
 any geographical location. It allows the user to search by date and through various
 categories. If a user would like to save an event to their calendar, they can create
-account either with a local login or with
-Facebook Authentication. Once logged in, the user can use their dashboard to save
-and view their activities.
-
+account either with a local login or with Facebook Authentication. Once logged in,
+the user can use their dashboard to save and view their activities.
 
 Viewable Activities include:
   * Sports
@@ -45,6 +43,9 @@ Methodologies:
   * BEM
   * MVC
   * Version Control
+
+APIs:
+  * Eventful API
 
 For a complete list of Technologies please check 'Gemfile'
 
